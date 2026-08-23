@@ -63,7 +63,7 @@ A demonstration of how OIDC can be used to authenticate to OpenBao. In this exam
     bao login -method=oidc > output.txt 2>&1 & sleep 2; grep http output.txt | xargs w3m
     ```
 
-1.  The w3m display will appear as below. Navigate to the username and password fields using the arrow keys. Press enter to begin typing text info each field and enter again to submit it.
+1.  The w3m display will appear as below. Navigate to the username and password fields using the arrow keys. Press enter to begin typing text info each field and enter again to submit it. The username is `oidc-user` and the password is `password123`
     <details open>
     <summary>Sample output</summary>
     <pre>

@@ -1,5 +1,7 @@
 FROM openbao/openbao:latest
 
+USER root
+
 ARG TARGETARCH
 ARG SPIRE_VERSION=1.14.5
 ARG SPIRE_PACKAGE=spire-${SPIRE_VERSION}-linux-${TARGETARCH}-musl.tar.gz

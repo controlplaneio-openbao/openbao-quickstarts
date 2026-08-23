@@ -20,7 +20,7 @@ OpenBao supports a [userpass](https://openbao.org/docs/auth/userpass/) authentic
     - **client** -  The container used to configure and test OpenBao.
 
 # Create a User
-1.  Exec into the client container using `make exec` and enable the userpass authentication method.
+1.  Exec into the client container using `make exec-client` and enable the userpass authentication method.
     ```bash
     bao auth enable userpass
     ```
