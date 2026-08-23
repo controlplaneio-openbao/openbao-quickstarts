@@ -31,9 +31,9 @@ OpenBao can be used to [sign SSH certificates](https://openbao.org/docs/secrets/
     <pre>Success! Enabled the ssh secrets engine at: ssh-client-signer/</pre>
     </details>
 
-1.  From within the `/keys` directory configure OpenBao with a CA for signing client keys
+1.  Configure OpenBao with a CA for signing client keys
     ```bash
-    bao write ssh-client-signer/config/ca public_key=@ca_id_rsa.pub private_key=@ca_id_rsa
+    bao write ssh-client-signer/config/ca public_key=@/keys/ca_id_rsa.pub private_key=@/keys/ca_id_rsa
     ```
     <details>
     <summary>Sample output</summary>

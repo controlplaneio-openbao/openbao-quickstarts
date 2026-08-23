@@ -97,7 +97,6 @@ Once this completes there will be three containers running:
 # Retrieving a JWT and Logging Into OpenBao
 1.  Exec into the spire-agent container using `make exec-spire-agent`. The spire-agent itself can be used to test retrieving a JWT from the workload API. Change to the `workload-1` user using `su - workload-1`. The UID of this user is 10001 matching the entry created earlier for SPIFFE ID `spiffe://home.arpa/workload-1`.
     ```bash
-    export BAO_ADDR=http://openbao:8200
     spire-agent api fetch jwt -audience openbao
     ```
     <details>
