@@ -5,6 +5,24 @@ Required binaries:
 * openssl 3.5+
 * jq
 
+## Bootstrap certificate
+
+The listener in `openbao.d/03-listeners.hcl` starts with a self-signed ML-DSA-65
+bootstrap certificate (`tls/server.pem`, `tls/server-key.pem`). As it is
+self-signed, the same certificate also serves as the CA (`tls/ca.pem`). It was
+created with:
+
+```sh
+openssl genpkey -algorithm ML-DSA-65 \
+  -provparam ml-dsa.output_formats=seed-only \
+  -out tls/server-key.pem
+openssl req -x509 -key tls/server-key.pem -out tls/server.pem -days 3650 \
+  -subj "/CN=OpenBao PQC Demo Bootstrap" \
+  -addext "subjectAltName=DNS:localhost,IP:127.0.0.1" \
+  -addext "authorityKeyIdentifier=keyid"
+cp tls/server.pem tls/ca.pem
+```
+
 ## Bootstrap the server
 
 ```sh
@@ -19,7 +37,7 @@ DEMO_ADMIN_PASSWORD=student bao server -config openbao.d
 
 ```sh
 export BAO_ADDR=https://127.0.0.1:8200
-export BAO_CACERT=$PWD/openbao.d/bootstrap-cert.pem
+export BAO_CACERT=$PWD/tls/ca.pem
 bao status
 bao login -method=userpass username=admin password=student
 ```
